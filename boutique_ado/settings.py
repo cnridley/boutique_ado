@@ -37,6 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account', # allows all the basic user account stuff like logging in and out, password resets.
+    'allauth.socialaccount', # , social account which specifically handles logging in via
+                                   #social media providers like Facebook and Google.
 ]
 
 MIDDLEWARE = [
@@ -59,13 +64,34 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',
+                'django.template.context_processors.request', #required. Access HTTP request objects
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
     },
 ]
+
+#Allows users to log in via email, a nice touch for any website. 
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SITE_ID = 1
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend' #temeporary email for confirmation of account setip
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email' #tells allauth what we want to allow
+ACCOUNT_EMAIL_REQUIRED = True #makes it so an email is required to sign up
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory' #so that we know users are using real emails
+ACCOUNT_SIGNUP_EMAIL_ENTER_TWICE = True #twice to avoid typos etc.
+ACCOUNT_USERNAME_MIN_LENGTH = 4 
+LOGIN_URL = '/accounts/login/'
+LOGIN_REDIRECT_URL = '/success'
 
 WSGI_APPLICATION = 'boutique_ado.wsgi.application'
 
