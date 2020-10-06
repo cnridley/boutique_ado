@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'allauth.account', # allows all the basic user account stuff like logging in and out, password resets.
     'allauth.socialaccount', # , social account which specifically handles logging in via
                                    #social media providers like Facebook and Google.
-    'home'
+    'home',
+    'products'
 ]
 
 MIDDLEWARE = [
