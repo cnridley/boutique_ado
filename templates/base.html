@@ -1,36 +1,4 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@cnridley 
-ckz8780
-/
-boutique_ado_v1
-generated from Code-Institute-Org/gitpod-full-template
-2
-622
-Code
-Issues
-Pull requests
-1
-Actions
-Projects
-Wiki
-Security
-Insights
-boutique_ado_v1/templates/base.html
-@ckz8780
-ckz8780 Added mobile header and main navbar
-Latest commit e77fa8e on 27 Jan
- History
- 1 contributor
-129 lines (115 sloc)  6.13 KB
-  
-{% load static %}
+  {% load static %}
 
 <!doctype html>
 <html lang="en">
@@ -75,7 +43,7 @@ Latest commit e77fa8e on 27 Jan
                 </a>
             </div>
             <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-                <form method="GET" action="">
+                <form method="GET" action="{% url 'products' %}">
                     <div class="input-group w-100">
                         <input class="form-control border border-black rounded-0" type="text" name="q" placeholder="Search our site">
                         <div class="input-group-append">
